@@ -1,0 +1,26 @@
+{
+    "name": "notification-microservice",
+    "version": "0.1.0",
+    "description": "A microservice built to send email, sms and socket message as notifications  to handle any form of user notification in any system/project/service.",
+    "main": "app.js",
+    "scripts": {
+        "test": "always write test for everything you create",
+        "start": "node src/app.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://gitlab.com/natterbasee/notification-microservice.git"
+    },
+    "keywords": [
+        "notification",
+        "email",
+        "sms",
+        "socket"
+    ],
+    "author": "Ojo Oluwasetemi <oluwasetemi.ojo@natterbase.com>",
+    "license": " ISC",
+    "bugs": {
+        "url": "https://gitlab.com/natterbasee/notification-microservice/issues"
+    },
+    "homepage": "https://gitlab.com/natterbasee/notification-microservice#readme"
+}
