@@ -4,8 +4,20 @@
     "description": "A microservice built to send email, sms and socket message as notifications  to handle any form of user notification in any system/project/service.",
     "main": "app.js",
     "scripts": {
-        "test": "always write test for everything you create",
-        "start": "node src/app.js"
+        "test": "jest --watchAll",
+        "start": "node src/app.js",
+        "lint": "eslint src/ ",
+        "lint:fix": "npm run lint -- --fix",
+        "format": "npm run prettier",
+        "prettier": "prettier --write \"**/**/*.+(js|json|md|graphql|gql|yml|yaml)\"",
+        "validate": "npm run lint && npm run prettier -- --list-different",
+        "debug": "nodemon  -r esm --inspect app.js",
+        "lint-staged": "lint-staged -- --quiet"
+    },
+    "husky": {
+        "hooks": {
+            "pre-commit": "lint-staged"
+        }
     },
     "repository": {
         "type": "git",
@@ -22,5 +34,19 @@
     "bugs": {
         "url": "https://gitlab.com/natterbasee/notification-microservice/issues"
     },
-    "homepage": "https://gitlab.com/natterbasee/notification-microservice#readme"
+    "homepage": "https://gitlab.com/natterbasee/notification-microservice#readme",
+    "devDependencies": {
+        "eslint": "^6.5.1",
+        "eslint-config-kentcdodds": "^14.5.0",
+        "eslint-config-prettier": "^6.4.0",
+        "eslint-plugin-prettier": "^3.1.1",
+        "husky": "^3.0.8",
+        "jest": "^24.9.0",
+        "lint-staged": "^9.4.2",
+        "prettier": "^1.18.2"
+    },
+    "dependencies": {
+        "dotenv": "^8.1.0",
+        "express": "^4.17.1"
+    }
 }

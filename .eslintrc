@@ -1,0 +1,43 @@
+{
+    "parserOptions": {
+        "ecmaVersion": 2019
+        // "parser": "babel-eslint"
+    },
+    "extends": ["eslint:recommended", "kentcdodds", "eslint-config-prettier"],
+    "rules": {
+        // "prettier/prettier": "error",
+        "quotes": [
+            2,
+            "single",
+            {
+                "avoidEscape": true,
+                "allowTemplateLiterals": true
+            }
+        ],
+        "valid-jsdoc": [
+            "error",
+            {
+                "requireReturn": true,
+                "requireReturnType": true,
+                "requireParamDescription": false,
+                "requireReturnDescription": true
+            }
+        ],
+        "require-jsdoc": [
+            "error",
+            {
+                "require": {
+                    "FunctionDeclaration": true,
+                    "MethodDefinition": true,
+                    "ClassDeclaration": true
+                }
+            }
+        ]
+    },
+    "env": {
+        "browser": true,
+        "node": true,
+        "jest": true
+    },
+    "plugins": ["prettier"]
+}
