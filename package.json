@@ -4,14 +4,17 @@
     "description": "A microservice built to send email, sms and socket message as notifications  to handle any form of user notification in any system/project/service.",
     "main": "app.js",
     "scripts": {
-        "test": "jest --watchAll",
+        "test": "is-ci \"test:coverage\" \"test:watch\"",
+        "test:coverage": "jest --coverage",
+        "test:watch": "jest --watch",
+        "test:debug": "node --inspect-brk ./node_modules/jest/bin/jest.js --runInBand --watch",
         "start": "node src/app.js",
-        "lint": "eslint src/ ",
+        "lint": "jest --config src/tests/jest.lint.js",
         "lint:fix": "npm run lint -- --fix",
         "format": "npm run prettier",
         "prettier": "prettier --write \"**/**/*.+(js|json|md|graphql|gql|yml|yaml)\"",
-        "validate": "npm run lint && npm run prettier -- --list-different",
-        "debug": "nodemon  -r esm --inspect app.js",
+        "validate": "npm run lint && npm run prettier",
+        "debug": "nodemon --inspect src/app.js",
         "lint-staged": "lint-staged -- --quiet"
     },
     "husky": {
@@ -39,11 +42,15 @@
         "eslint": "^6.5.1",
         "eslint-config-kentcdodds": "^14.5.0",
         "eslint-config-prettier": "^6.4.0",
+        "eslint-plugin-jest": "^22.17.0",
         "eslint-plugin-prettier": "^3.1.1",
         "husky": "^3.0.8",
+        "is-ci-cli": "^2.0.0",
         "jest": "^24.9.0",
+        "jest-runner-eslint": "^0.7.5",
         "lint-staged": "^9.4.2",
-        "prettier": "^1.18.2"
+        "prettier": "^1.18.2",
+        "supertest": "^4.0.2"
     },
     "dependencies": {
         "dotenv": "^8.1.0",

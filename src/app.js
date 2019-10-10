@@ -44,7 +44,6 @@ app.use((req, res, next) => {
 // All route should be added to the index.js file inside the route folder
 app.use('/api', routes);
 
-// eslint-disable-next-line no-unused-vars
 const server = app.listen(process.env.PORT);
 //  Start socketIo
 // new Socket(io(server)).startSocket()
@@ -71,3 +70,5 @@ if (app.get('env') === 'development') {
 app.use(errorHandlers.productionErrors);
 
 logger.log(`\nListening @ port http://localhost:${process.env.PORT}`);
+
+module.exports = server;

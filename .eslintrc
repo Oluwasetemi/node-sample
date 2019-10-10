@@ -3,7 +3,12 @@
         "ecmaVersion": 2019
         // "parser": "babel-eslint"
     },
-    "extends": ["eslint:recommended", "kentcdodds", "eslint-config-prettier"],
+    "extends": [
+        "eslint:recommended",
+        "kentcdodds",
+        "eslint-config-prettier",
+        "plugin:jest/all"
+    ],
     "rules": {
         // "prettier/prettier": "error",
         "quotes": [
@@ -39,5 +44,5 @@
         "node": true,
         "jest": true
     },
-    "plugins": ["prettier"]
+    "plugins": ["prettier", "jest"]
 }
