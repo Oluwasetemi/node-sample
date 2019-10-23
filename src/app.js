@@ -5,10 +5,10 @@ require('dotenv').config();
 // const morgan = require('morgan');
 const express = require('express');
 const swaggerUi = require('swagger-ui-express');
-const swaggerDocument = require('./docs/swagger.json');
 
 const routes = require('../src/routes');
 const logger = require('./utils/logger');
+const swaggerDocument = require('./docs/swagger.json');
 const errorHandlers = require('./utils/errorhandler');
 
 if (!fs.existsSync('./public/')) {

@@ -2,33 +2,49 @@
 /* eslint-disable jest/no-hooks */
 /* eslint-disable jest/prefer-expect-assertions */
 const request = require('supertest');
-let res, server;
+let res, server, name;
 
 describe('test the example route and controller', () => {
     let path = '';
     beforeEach(() => {
         server = require('../../app');
     });
-    afterEach(() => {
-        server.close();
+    afterEach(async () => {
+        await server.close();
     });
     const exec = () => {
         return request(server).get(path);
     };
 
     describe('/api/test', () => {
-        it(`/api/test should return statusCode 200 and {'hello': 'world'}`, async () => {
+        it(`/api/test should return statusCode 200 and {'hello': <name>}`, async () => {
             path = '/api/test';
-            res = await exec();
+            name = 'test';
+            res = await request(server)
+                .post(path)
+                .send({ name });
             expect(res.status).toBe(200);
-            expect(res.body).toHaveProperty('hello', 'world');
+            expect(res.body).toHaveProperty('hello', name);
+        });
+
+        it(`pOST /api/test should return statusCode 200 and {'hello': stranger!} with req.body.name`, async () => {
+            path = '/api/test';
+            name = '';
+            res = await request(server)
+                .post(path)
+                .send({ name });
+            expect(res.status).toBe(200);
+            expect(res.body).toHaveProperty('hello', 'stranger!');
         });
     });
     describe('/api/hello', () => {
         it(`/api/test should return statusCode 200 and {'example': 'is-working'}`, async () => {
-            path = '/api/hello';
+            name = 'adewale';
+            const age = 12;
+            path = `/api/hello?name=${name}&age=${age}`;
             res = await exec();
             expect(res.status).toBe(200);
+            expect(res.body).toHaveProperty('example', 'is-working');
             expect(res.body).toHaveProperty('example', 'is-working');
         });
     });

@@ -5,8 +5,8 @@
     "main": "app.js",
     "scripts": {
         "test": "is-ci \"test:coverage\" \"test:watch\"",
-        "test:coverage": "jest --coverage",
-        "test:watch": "jest --watch",
+        "test:coverage": "jest --coverage --verbose --runInBand",
+        "test:watch": "jest --watch --verbose --runInBand",
         "test:debug": "node --inspect-brk ./node_modules/jest/bin/jest.js --runInBand --watch",
         "start": "node src/app.js",
         "lint": "jest --config src/tests/jest.lint.js",
