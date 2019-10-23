@@ -1,0 +1,139 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "0.0.1",
+        "title": "Node Sample"
+    },
+    "host": "localhost:9999",
+    "basePath": "/",
+    "schemes": ["http", "https"],
+    "consumes": ["application/json"],
+    "produces": ["application/json"],
+    "paths": {
+        "/api/hello": {
+            "x-swagger-router-controller": "exampleController",
+            "get": {
+                "description": "Returns 'Hello' to the caller with the name the person passed to the req.query.name",
+                "operationId": "hello",
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "The name of the person to whom to say hello",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "age",
+                        "in": "query",
+                        "description": "The age of the person to whom to say hello",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "$ref": "#/definitions/HelloWorldResponse"
+                        }
+                    },
+                    "default": {
+                        "description": "Error",
+                        "schema": {
+                            "$ref": "#/definitions/ErrorResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/test": {
+            "x-swagger-router-controller": "exampleController",
+            "post": {
+                "description": "",
+                "operationId": "test",
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "body",
+                        "description": "name of the person testing the route",
+                        "required": true,
+                        "type": "string",
+                        "schema": {
+                            "required": ["name"],
+                            "properties": {
+                                "name": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "$ref": "#/definitions/CreateTest"
+                        }
+                    },
+                    "400": {
+                        "description": "Error",
+                        "schema": {
+                            "$ref": "#/definitions/ErrorResponse"
+                        }
+                    },
+                    "404": {
+                        "description": "Page Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/ErrorResponse"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "HelloWorldResponse": {
+            "required": ["message"],
+            "properties": {
+                "message": {
+                    "type": "string"
+                },
+                "age": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "number"
+                }
+            }
+        },
+        "ErrorResponse": {
+            "required": ["statusCode", "error", "description"],
+            "properties": {
+                "statusCode": {
+                    "type": "string"
+                },
+                "error": {
+                    "type": "boolean"
+                },
+                "description": {
+                    "type": "string"
+                }
+            }
+        },
+        "CreateTest": {
+            "required": ["message"],
+            "properties": {
+                "statusCode": {
+                    "type": "string"
+                },
+                "error": {
+                    "type": "boolean"
+                },
+                "description": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}

@@ -50,7 +50,8 @@
         "jest-runner-eslint": "^0.7.5",
         "lint-staged": "^9.4.2",
         "prettier": "^1.18.2",
-        "supertest": "^4.0.2"
+        "supertest": "^4.0.2",
+        "swagger-ui-express": "^4.1.2"
     },
     "dependencies": {
         "dotenv": "^8.1.0",

@@ -4,6 +4,8 @@ require('dotenv').config();
 // const io = require('socket.io')
 // const morgan = require('morgan');
 const express = require('express');
+const swaggerUi = require('swagger-ui-express');
+const swaggerDocument = require('./docs/swagger.json');
 
 const routes = require('../src/routes');
 const logger = require('./utils/logger');
@@ -25,6 +27,9 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
+// api documentation
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+
 // Setup morgan dev
 // app.use(morgan('dev'));
 
@@ -44,7 +49,7 @@ app.use((req, res, next) => {
 // All route should be added to the index.js file inside the route folder
 app.use('/api', routes);
 
-const server = app.listen(process.env.PORT);
+const server = app.listen(process.env.PORT || 3000);
 //  Start socketIo
 // new Socket(io(server)).startSocket()
 

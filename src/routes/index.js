@@ -7,9 +7,7 @@ const exampleController = require('../controllers/exampleController');
 const router = express.Router();
 
 // example route
-router.get('/test', (req, res) => {
-    res.status(200).json({ hello: 'world' });
-});
+router.post('/test', exampleController.test);
 
 // example route with controllers and middleware
 router.get('/hello', exampleController.hello);
