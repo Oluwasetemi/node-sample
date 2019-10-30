@@ -4,7 +4,7 @@
         "version": "0.0.1",
         "title": "Node Sample"
     },
-    "host": "localhost:9999",
+    "host": "localhost:9990",
     "basePath": "/",
     "schemes": ["http", "https"],
     "consumes": ["application/json"],
