@@ -11,7 +11,8 @@ jobs:
           name: xyz
           command: |
             echo "create the artifact store here";
-            touch coverage/test-results.xml
+            mkdir tmp/
+            touch tmp/test-results.xml
       - run:
           name: update-npm
           command: "sudo npm install -g npm@latest"
@@ -33,11 +34,11 @@ jobs:
           command: npm run test:coverage
       - store_artifacts: # special step to save test results as as artifact
           # Upload test summary for display in Artifacts: https://circleci.com/docs/2.0/artifacts/
-          path: coverage
+          path: tmp
           prefix: tests
       - store_artifacts: # for display in Artifacts: https://circleci.com/docs/2.0/artifacts/
           path: coverage
           prefix: coverage
       - store_test_results: # for display in Test Summary: https://circleci.com/docs/2.0/collect-test-data/
-          path: coverage/test-results.xml
+          path: tmp/test-results.xml
       # See https://circleci.com/docs/2.0/deployment-integrations/ for deploy examples
