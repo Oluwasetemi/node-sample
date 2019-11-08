@@ -11,7 +11,7 @@ jobs:
           name: xyz
           command: |
             echo "create the artifact store here";
-            touch /src/test-results.xml
+            touch /coverage/test-results.xml
       - run:
           name: update-npm
           command: "sudo npm install -g npm@latest"
